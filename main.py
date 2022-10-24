@@ -165,3 +165,24 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+letras=[]
+for number in aux:
+    letras1=[]
+    for item in number:
+        letras2=[]
+        for j in item:
+            if j==0:
+                letras2.append('A')
+            elif j==25:
+                letras2.append('B')
+            elif(j==50):
+                letras2.append('C')
+            elif(j==75):
+                letras2.append('D')
+            elif(j==100):
+                letras2.append('E')
+            
+        letras1.append(letras2)
+    letras.append(letras1)
+np.array(letras)
+letras
