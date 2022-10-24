@@ -1,67 +1,77 @@
 #1. Import the NUMPY package under the name np.
 
-las
+import numpy as np
 
 #2. Print the NUMPY version and the configuration.
 
-
+print(np.__version__)
+print(np.show_config())
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
+a = np.random.random((2,3,5))
+g = np.random.randint(0, 100000000, (2, 3, 5))
+y = np.random.rand(2,3,5)
 
 
 #4. Print a.
 
-
+print(a)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
+b= np.ones((5,2,3))
 
 
 
 #6. Print b.
+print(b)
 
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
+a.size
+b.size
+both equal 30 thus they have the same size
 
 
 
 #8. Are you able to add a and b? Why or why not?
-
+No, not the same shape
 
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-
+c = b.reshape((2,3,5))
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d = a + c
+it works due to them having the same shape
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
-
+d is all values of a plus 1, due to adding b reshaped (c) to a
 
 
 #12. Multiply a and c. Assign the result to e.
 
-
+e =np.multiply(a,c)
 
 #13. Does e equal to a? Why or why not?
 
-
+e equals to a because e is just a reshaped b (ones) that was multiplied with a and only contains 1s = 1*a = a
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
+d_max = d.max()
+d_min = d.min()
+d_mean = d.mean()
 
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
+f = np.empty((2,3,5))
 
 
 
@@ -74,7 +84,9 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
-
+conditions = [d == d_min, (d > d_min) & (d < d_mean),d == d_mean, (d>d_mean) & (d<d_max), d == d_max]
+choices = [0, 25, 50, 75,100]
+f = np.select(conditions,choices)
 
 
 
@@ -98,7 +110,13 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
+array([[[ 75,  25,  25,  75,  75],
+        [ 75,  75,  25,  25,  75],
+        [  0,  25,  25,  75,  75]],
 
+       [[ 75,  25,  25,  25,  25],
+        [ 75,  75,  25,  75,  25],
+        [ 75, 100,  75,  25,  75]]])
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -112,3 +130,17 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
+
+conditions = [d == d_min, (d > d_min) & (d < d_mean),d == d_mean, (d>d_mean) & (d<d_max), d == d_max]
+choices = ["A", "B", "C", "D","E"]
+f = np.select(conditions,choices)
+
+
+[[['D' 'B' 'B' 'D' 'D']
+  ['D' 'D' 'B' 'B' 'D']
+  ['A' 'B' 'B' 'D' 'D']]
+
+ [['D' 'B' 'B' 'B' 'B']
+  ['D' 'D' 'B' 'D' 'B']
+  ['D' 'E' 'D' 'B' 'D']]]
