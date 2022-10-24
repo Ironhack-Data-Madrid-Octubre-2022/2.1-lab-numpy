@@ -175,7 +175,13 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
 Again, you don't need Numpy in this question.
 """
 
-an=[[[]]]
+an=np.array([[[ 'D',  'D',  'D',  'B',  'D'],
+        [ 'D',  'D',  'B',  'B',  'B'],
+        [ 'D',  'B',  'D',  'D',  'D']],
+
+       [[ 'B',  'B',  'B',  'B',  'E'],
+        [ 'D',  'D',  'D',  'D',  'D'],
+        [ 'B',  'D',   'A',  'D', 'D']]])
 for i in range(2):
         
         for e in range(3):
@@ -183,14 +189,14 @@ for i in range(2):
                 
                 for x in range(5):
                         if f[i][e][x]==0:
-                                an.append('A')
+                                an[i][e][x]="A"
                         elif f[i][e][x]==25:
-                                an.append('D')
+                                an[i][e][x]="B"
                         elif f[i][e][x]==50:
-                                an.append('C')    
+                                an[i][e][x]="C"
                         elif f[i][e][x]==75:
-                                an.append("D")
+                                an[i][e][x]="D"
                         elif f[i][e][x]==100:
-                                an.append("F")   
+                                an[i][e][x]="F"
                                 
 print(an)
